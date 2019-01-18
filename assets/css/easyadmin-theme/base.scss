@@ -245,6 +245,13 @@ body {
     margin-left: 15px;
 }
 
+.batch-actions > form {
+    display: flex;
+}
+.batch-actions > form > * {
+    margin-left: 15px;
+}
+
 .form-action-search .form-group {
     margin: 0;
     padding: 0;
