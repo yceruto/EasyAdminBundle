@@ -57,13 +57,20 @@ class Autocomplete
 
     private function processResults($entities, array $targetEntityConfig): array
     {
-        $results = [];
+        $fields = $targetEntityConfig['autocomplete']['fields'] ?? [];
 
+        $results = [];
         foreach ($entities as $entity) {
-            $results[] = [
+            $data = [
                 'id' => $this->propertyAccessor->getValue($entity, $targetEntityConfig['primary_key_field_name']),
                 'text' => (string) $entity,
             ];
+
+            foreach ($fields as $field) {
+                $data[$field] = $this->propertyAccessor->getValue($entity, $field);
+            }
+
+            $results[] = $data;
         }
 
         return $results;
