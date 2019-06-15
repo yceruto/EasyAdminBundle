@@ -384,8 +384,8 @@ These are the options that you can define for each field:
   done internally by the bundle). The allowed values are:
 
   * Any of the `Symfony Form types`_.
-  * Any of the custom EasyAdmin form types: ``easyadmin_autocomplete`` (they are
-    explained later in this chapter).
+  * Any of the custom EasyAdmin form types: ``code``, ``easyadmin_autocomplete``
+    (they are explained later in this chapter).
 * ``type_options`` (optional), a hash with the options passed to the Symfony
   Form type used to render the field.
 
@@ -553,6 +553,56 @@ change this value (globally or per entity):
             Category:
                 show:
                     max_results: 5
+        # ...
+
+Code
+----
+
+It displays source code in a textarea like field and provides advanced features
+such as code highlighting and smart indenting.
+
+.. code-block:: yaml
+
+    # config/packages/easy_admin.yaml
+    easy_admin:
+        entities:
+            Server:
+                class: App\Entity\Server
+                form:
+                    fields:
+                        - { property: 'config', type: 'code', language: 'nginx' }
+                        # ...
+        # ...
+
+This type defines the following configuration options:
+
+* ``height``: the initial height of code blocks is the same as their contents
+  and it grows automatically as you add more contents. This option, which must
+  be an integer, sets the height of the code block element in pixels. If
+  contents don't fit, a scrollbar is displayed.
+* ``language``: sets the language used for the syntax highlighting of the code
+  (the JavaScript library used for that can't autodetect the language). The
+  available languages are: ``css``, ``dockerfile``, ``js`` (equivalent to
+  ``javascript``), ``markdown``, ``nginx``, ``php``, ``shell``, ``sql``,
+  ``twig``, ``xml``, ``yaml-frontmatter`` (used in some blogs, CMS systems and
+  static site generators), ``yaml``.
+* ``tab_size``: an integer (default: ``4``) that defines the indention size (no
+  matter if the code uses white spaces or tabs).
+* ``indent_with_tabs``: a boolean (default: ``false``) that when set to ``true``
+  makes the editor use real tabs instead of white spaces for indention.
+
+.. code-block:: yaml
+
+    # config/packages/easy_admin.yaml
+    easy_admin:
+        entities:
+            ExamQuestion:
+                class: App\Entity\ExamQuestion
+                form:
+                    fields:
+                        - { property: 'question', type: 'code', language: 'yaml', height: 150, tab_size: 4 }
+                        - { property: 'codeSample', type: 'code', language: 'php', height: 600, tab_size: 2 }
+                        # ...
         # ...
 
 .. _edit-new-advanced-form-design:

@@ -3,6 +3,7 @@
 namespace EasyCorp\Bundle\EasyAdminBundle\Form\Util;
 
 use EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminAutocompleteType;
+use EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminCodeType;
 use EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminDividerType;
 use EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminFormType;
 use EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminGroupType;
@@ -59,6 +60,7 @@ final class FormTypeHelper
         'button' => ButtonType::class,
         'checkbox' => CheckboxType::class,
         'choice' => ChoiceType::class,
+        'code' => EasyAdminCodeType::class,
         'collection' => CollectionType::class,
         'color' => ColorType::class,
         'country' => CountryType::class,

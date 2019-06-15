@@ -467,6 +467,19 @@
     {{- block('form_label') -}}
 {% endblock easyadmin_autocomplete_inner_label %}
 
+{# EasyAdminCode form type #}
+{% block easyadmin_code_widget %}
+    <textarea id="{{ id }}" name="{{ name }}" data-easyadmin-code data-language="{{ attr.language }}" data-tab-size="{{ attr.tabSize }}" data-indent-with-tabs="{{ attr.indentWithTabs ? 'true' : 'false' }}">{{ data }}</textarea>
+
+    <link rel="stylesheet" href="{{ asset('bundles/easyadmin/form-type-code.css') }}"/>
+    <script src="{{ asset('bundles/easyadmin/form-type-code.js') }}"></script>
+    {% if attr.height is not null %}
+        <style type="text/css">
+            #{{ id }} + .CodeMirror { height: {{ attr.height }}px !important; max-height: none; }
+        </style>
+    {% endif %}
+{% endblock easyadmin_code_widget %}
+
 {# EasyAdminSection form type #}
 {% block easyadmin_section_row %}
     {% set _translation_domain = easyadmin.entity.translation_domain %}

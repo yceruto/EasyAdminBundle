@@ -35,6 +35,7 @@ Encore
     .addEntry('app', './assets/js/app.js')
     .addEntry('app-rtl', './assets/js/app-rtl.js')
     .addEntry('bootstrap-all', './assets/js/bootstrap-all.js')
+    .addEntry('form-type-code', './assets/js/form-type-code.js')
 ;
 
 module.exports = Encore.getWebpackConfig();
