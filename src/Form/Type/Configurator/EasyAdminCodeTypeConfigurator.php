@@ -19,20 +19,20 @@ class EasyAdminCodeTypeConfigurator implements TypeConfiguratorInterface
      */
     public function configure($name, array $options, array $metadata, FormConfigInterface $parentConfig)
     {
-        if (isset($metadata['height']) && !is_int($metadata['height'])) {
-            throw new \InvalidArgumentException(sprintf('The "height" option in the "%s" field of the "%s" entity must be an integer, "%s" data type passed,', $name, $parentConfig->getOption('entity'), gettype($metadata['height'])));
+        if (isset($metadata['height']) && !\is_int($metadata['height'])) {
+            throw new \InvalidArgumentException(\sprintf('The "height" option in the "%s" field of the "%s" entity must be an integer, "%s" data type passed,', $name, $parentConfig->getOption('entity'), \gettype($metadata['height'])));
         }
 
-        if (isset($metadata['tab_size']) && !is_int($metadata['tab_size'])) {
-            throw new \InvalidArgumentException(sprintf('The "tab_size" option in the "%s" field of the "%s" entity must be an integer, "%s" data type passed,', $name, $parentConfig->getOption('entity'), gettype($metadata['tab_size'])));
+        if (isset($metadata['tab_size']) && !\is_int($metadata['tab_size'])) {
+            throw new \InvalidArgumentException(\sprintf('The "tab_size" option in the "%s" field of the "%s" entity must be an integer, "%s" data type passed,', $name, $parentConfig->getOption('entity'), \gettype($metadata['tab_size'])));
         }
 
-        if (isset($metadata['indent_with_tabs']) && !is_bool($metadata['indent_with_tabs'])) {
-            throw new \InvalidArgumentException(sprintf('The "indent_with_tabs" option in the "%s" field of the "%s" entity must be a boolean, "%s" data type passed,', $name, $parentConfig->getOption('entity'), gettype($metadata['indent_with_tabs'])));
+        if (isset($metadata['indent_with_tabs']) && !\is_bool($metadata['indent_with_tabs'])) {
+            throw new \InvalidArgumentException(\sprintf('The "indent_with_tabs" option in the "%s" field of the "%s" entity must be a boolean, "%s" data type passed,', $name, $parentConfig->getOption('entity'), \gettype($metadata['indent_with_tabs'])));
         }
 
         if (isset($metadata['language']) && !\in_array($metadata['language'], self::$supportedLanguages)) {
-            throw new \InvalidArgumentException(sprintf('The "language" option in the "%s" field of the "%s" entity must be one of the following supported languages: "%s".', $name, $parentConfig->getOption('entity'), implode(', ', self::$supportedLanguages)));
+            throw new \InvalidArgumentException(\sprintf('The "language" option in the "%s" field of the "%s" entity must be one of the following supported languages: "%s".', $name, $parentConfig->getOption('entity'), \implode(', ', self::$supportedLanguages)));
         }
 
         $options['attr']['height'] = $metadata['height'] ?? null;
