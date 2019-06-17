@@ -469,13 +469,13 @@
 
 {# EasyAdminCode form type #}
 {% block easyadmin_code_widget %}
-    <textarea id="{{ id }}" name="{{ name }}" data-easyadmin-code data-language="{{ attr.language }}" data-tab-size="{{ attr.tabSize }}" data-indent-with-tabs="{{ attr.indentWithTabs ? 'true' : 'false' }}">{{ data }}</textarea>
+    <textarea id="{{ id }}" name="{{ name }}" data-easyadmin-code data-language="{{ language }}" data-tab-size="{{ tabSize }}" data-indent-with-tabs="{{ indentWithTabs ? 'true' : 'false' }}">{{ data }}</textarea>
 
     <link rel="stylesheet" href="{{ asset('bundles/easyadmin/form-type-code.css') }}"/>
     <script src="{{ asset('bundles/easyadmin/form-type-code.js') }}"></script>
-    {% if attr.height is not null %}
+    {% if height is not null %}
         <style type="text/css">
-            #{{ id }} + .CodeMirror { height: {{ attr.height }}px !important; max-height: none; }
+            #{{ id }} + .CodeMirror { height: {{ height }}px !important; max-height: none; }
         </style>
     {% endif %}
 {% endblock easyadmin_code_widget %}
